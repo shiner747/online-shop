@@ -1,0 +1,20 @@
+from roomsq.sq import Room
+
+print(Room.__dir__)
+
+my_room = Room(float(input('Введите ширину комнаты:\n')),
+               float(input('Введите длину комнаты:\n')), float(input('Введите высоту комнаты:\n')))
+
+print(Room.__doc__)
+my_room.set_square_WD(float(input('Введите общую ширину дверей и окон:\n')),
+                      float(input('Введите общую высоту дверей и окон:\n')))
+
+
+my_room.wallpapers(float(input('Введите ширину одного рулона обоев:\n')),
+                   float(input('Введите длину одного рулона обоев:\n')))
+
+
+last_square = (my_room.set_square_FULL() - my_room.get_square_WD())
+count_WP = last_square / my_room.get_square_WP()
+print(f'Площадь оклеиваемой поверхности составляет: {last_square} метров\n'
+      f'Количество рулонов обоев необходимое для ремонта: {int(count_WP) + 1}')
