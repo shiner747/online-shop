@@ -1,4 +1,45 @@
 from roomsq.sq import Room
+''Модуль выччисляет необходимые площади для ремонта комнаты'''
+
+
+class Room:
+
+    def __init__(self, width, lenght, height):
+        if isinstance(width, float) and isinstance(lenght, float) and isinstance(height, float):
+            self.width = width
+            self.lenght = lenght
+            self.height = height
+        else:
+            raise ValueError('Размеры комнаты должны быть типа float')
+
+    def set_square_FULL(self):
+        '''Метод вычисляет площадь комнаты без вычета площади окон и дверей'''
+        return (self.width + self.lenght) * self.height * 2
+
+    def set_square_WD(self, width_WD, height_WD):
+        '''Метод задает общую длину и общую ширину дверей и окон комнаты'''
+        if isinstance(width_WD, float) and isinstance(height_WD, float):
+            self.width_WD = width_WD
+            self.height_WD = height_WD
+        else:
+            raise ValueError('Размеры дверей и окон должны быть типа float')
+
+    def get_square_WD(self):
+        '''Метод вычисляет общую площадь дверей и окон'''
+        return self.width_WD * self.height_WD
+
+    def wallpapers(self, width_WP, lenght_WP):
+        '''Метод задает длину и ширину одного рулона обоев'''
+        if isinstance(width_WP, float) and isinstance(lenght_WP, float):
+            self.width_WP = width_WP
+            self.lenght_WP = lenght_WP
+        else:
+            raise ValueError('Размеры рулона должны быть типа float')
+
+    def get_square_WP(self):
+        '''Метод вычисляет площадь одного рулона обоев'''
+        return self.width_WP * self.lenght_WP
+
 
 print(Room.__dir__)
 
